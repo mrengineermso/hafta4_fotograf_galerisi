@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Photo Table with Hover Effect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: orange;
+        }
+
+        th, td {
+            border: 1px solid blue;
+            text-align: left;
+            padding: 8px;
+        }
+        h1{
+          background-color:Blue;
+          color:yellow;
+          text-align: center;
+          font-family: "Times New Roman", Times, serif;
+          font-size: 20px;
+        }
+
+        th {
+          background-color: blue;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <table id="photo-table">
+        <head>
+<h1>RANDOM PHOTO CREATOR</h1>
+               <button type="button" class="btn btn-success yenile" style="width: 100%;" onclick="location.reload()"><i class="bi bi-arrow-clockwise"></i> Sayfayı yenile</button>
+<div class="alert alert-success" role="alert"><i class="bi bi-info-circle" style="color:black;"></i> 
+  
+        </head>
+        <tbody>
+            <tr>
+                <td><img id="photo1"></td>
+                <td><img id="photo2"></td>
+                <td><img id="photo3"></td>
+            </tr>
+            <tr>
+                <td><img id="photo4"></td>
+                <td><img id="photo5"></td>
+                <td><img id="photo6"></td>
+            </tr>
+            <tr>
+                <td><img id="photo7"></td>
+                <td><img id="photo8"></td>
+                <td><img id="photo9"></td>
+            </tr>
+            <tr>
+                <td><img id="photo10"></td>
+                <td><img id="photo11"></td>
+                <td><img id="photo12"></td>
+            </tr>
+            <tr>
+                <td><img id="photo13"></td>
+                <td><img id="photo14"></td>
+                <td><img id="photo15"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function rasgelefoto() {
+                return `https://source.unsplash.com/random/300x300?sig=${Math.random()}`;
+            }
+
+            function tabloguncelle() {
+                for (let i = 1; i <= 15; i++) {
+                    const photoElement = document.getElementById(`photo${i}`);
+                    photoElement.src = rasgelefoto();
+
+                    // Olay dinleyicilerini ekle
+                    photoElement.addEventListener('mouseenter', function () {
+                        photoElement.style.transform = 'scale(1.5)';
+                    });
+
+                    photoElement.addEventListener('mouseleave', function () {
+                        photoElement.style.transform = 'scale(1)';
+                    });
+                }
+            }
+
+            // Sayfa her yenilendiğinde tabloyu güncelle
+            tabloguncelle();
+        });
+    </script>
+</body>
+</html>
